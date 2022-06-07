@@ -14,10 +14,17 @@ spring:
   cloud:
     stream:
       bindings:
+        subscribeChangeStatusProduct:
+            destination: x-change-status-product
+            group: q-car-change-status-product
+            consumer:
+                maxAttempts: 1
         publishChangeStatusProduct:
-            group: q-change-status-product
             destination: x-change-status-product
       rabbitmq:
+        subscribeChangeStatusProduct:
+            consumer:
+                exchangeType: fanout
         publishChangeStatusProduct:
             producer:
                 exchangeType: fanout

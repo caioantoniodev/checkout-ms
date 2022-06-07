@@ -1,16 +1,15 @@
-package edu.zonework.checkoutms.adpters.outbound.amqp;
+package edu.zonework.checkoutms.adpters.inbound.amqp;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.zonework.checkoutms.domain.SaleState;
-import lombok.Getter;
+import lombok.Data;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 
-@Getter
+@Data
 @ToString
-public class BuyCarEvent {
+public class UpdateStateCarEvent {
 
     @JsonProperty("car_id")
     private String carId;
@@ -18,10 +17,4 @@ public class BuyCarEvent {
     private SaleState status;
     @JsonProperty("event_date_time")
     private LocalDateTime eventDateTime;
-
-    public BuyCarEvent(String carId) {
-        this.carId = carId;
-        this.status = SaleState.SOLD;
-        this.eventDateTime = LocalDateTime.now(ZoneId.of("UTC"));
-    }
 }
