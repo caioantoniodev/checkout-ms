@@ -21,6 +21,7 @@ spring:
         publishChangeStatusProduct:
             producer:
                 exchangeType: fanout
+
 rabbitmq:
     addresses: localhost
     username: guest
