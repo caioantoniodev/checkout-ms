@@ -1,0 +1,38 @@
+server:
+    port: 8080
+
+springdoc:
+  api-docs:
+    enabled: true
+  writer-with-default-pretty-printer: true
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://mongo:mongo@localhost/checkout-ms?authSource=admin
+      field-naming-strategy: org.springframework.data.mapping.model.SnakeCaseFieldNamingStrategy
+  cloud:
+    stream:
+      bindings:
+        publishChangeStatusProduct:
+            group: q-change-status-product
+            destination: x-change-status-product
+      rabbitmq:
+        publishChangeStatusProduct:
+            producer:
+                exchangeType: fanout
+rabbitmq:
+    addresses: localhost
+    username: guest
+    password: guest
+    port: 5672
+
+management:
+  health:
+    rabbit:
+      enabled: false
+  endpoints:
+    web:
+      base-path: "/"
+      path-mapping:
+        health: "healthcheck"

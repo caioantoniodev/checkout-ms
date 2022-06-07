@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo
+    container_name: checkout_ms_mongo
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongo
+      - MONGO_INITDB_ROOT_PASSWORD=mongo
+    networks:
+      - mongo-dev-network
+    volumes:
+      - ~/.containers/mongo-dev:/data/db
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: checkout_ms_rabbitmq
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ~/.containers/rabbitmq/data/:/var/lib/rabbitmq/
+        - ~/.containers/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+        - rabbitmq-dev-network
+
+networks:
+  mongo-dev-network:
+    driver: bridge
+  rabbitmq-dev-network:
+    driver: bridge
