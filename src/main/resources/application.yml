@@ -24,10 +24,10 @@ spring:
       rabbitmq:
         subscribeChangeStatusProduct:
             consumer:
-                exchangeType: fanout
+                exchangeType: direct
         publishChangeStatusProduct:
             producer:
-                exchangeType: fanout
+                exchangeType: direct
 
 rabbitmq:
     addresses: localhost
