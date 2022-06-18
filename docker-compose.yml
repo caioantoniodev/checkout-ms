@@ -13,7 +13,6 @@ services:
       - mongo-dev-network
     volumes:
       - ~/.containers/mongo-dev:/data/db
-
   rabbitmq:
     image: rabbitmq:management-alpine
     container_name: checkout_ms_rabbitmq
