@@ -1,2 +1,2 @@
 # checkout-ms
-Checkout microservice using event architecture 
+Microservice using event architecture 
